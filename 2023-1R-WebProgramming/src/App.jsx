@@ -17,45 +17,48 @@ import "./App.css";
 
 function App() {
   const [row, setRow] = useState([]);
+  const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    console.log("mount or update");
+  // useEffect(() => {
+  //   console.log("mount or update");
 
-    return () => {
-      console.log("unmount");
-    };
-  });
+  //   return () => {
+  //     console.log("unmount");
+  //   };
+  // });
 
-  useEffect(() => {
-    console.log("mount only");
-    fetch(
-      "http://openapi.se  oul.go.kr:8088/56516f79536c797338364a7a57634b/json/RealtimeCityAir/1/25/"
-    ).then(function (res2) {
-      res2.json().then(function (res3) {
-        setRow(res3.RealtimeCityAir.row); //App함수 update
-      });
-    });
-  }, []); //두번째 인자가 배열이면 mount시에만 실행
-
-  useEffect(() => {
-    console.log("update only", row);
-  }, [row]); //row가 업데이트됐을때만 실행
-
-  // const fetchData = () => {
-  //   if (row.length === 0) {
-  //     fetch(
-  //       "http://openapi.seoul.go.kr:8088/56516f79536c797338364a7a57634b/json/RealtimeCityAir/1/25/"
-  //     ).then(function (res2) {
-  //       res2.json().then(function (res3) {
-  //         setRow(res3.RealtimeCityAir.row); //App함수 update
-  //       });
+  // useEffect(() => {
+  //   console.log("mount only");
+  //   fetch(
+  //     "http://openapi.seoul.go.kr:8088/56516f79536c797338364a7a57634b/json/RealtimeCityAir/1/25/"
+  //   ).then(function (res2) {
+  //     res2.json().then(function (res3) {
+  //       setRow(res3.RealtimeCityAir.row); //App함수 update
   //     });
-  //   }
-  // };
+  //   });
+  // }, []); //두번째 인자가 배열이면 mount시에만 실행
+
+  // useEffect(() => {
+  //   console.log("update only", row);
+  // }, [row]); //row가 업데이트됐을때만 실행
+
+  const fetchData = () => {
+    if (row.length === 0) {
+      fetch(
+        "http://openapi.seoul.go.kr:8088/56516f79536c797338364a7a57634b/json/RealtimeCityAir/1/25/"
+      ).then(function (res2) {
+        res2.json().then(function (res3) {
+          setRow(res3.RealtimeCityAir.row); //App함수 update
+        });
+      });
+    }
+  };
   // const res = await fetch("http://openapi.seoul.go.kr:8088/56516f79536c797338364a7a57634b/json/RealtimeCityAir/1/25/");
   // const res2 = await res.json();
 
   // console.log(res2.RealtimeCityAir.row);
+  const htmlTitle = document.querySelector("title"); // <title> 태그 찾기
+  htmlTitle.innerHTML = count;
 
   return (
     <>
@@ -68,7 +71,7 @@ function App() {
         </a>
       </div>
       <h1>우헤헤</h1>
-      {/* <button onClick={fetchData}>로딩버튼</button> */}
+      <button onClick={fetchData}>로딩버튼</button>
 
       <table>
         <thead>
@@ -97,6 +100,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR hello.
         </p>
