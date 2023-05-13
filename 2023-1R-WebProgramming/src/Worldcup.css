@@ -1,0 +1,21 @@
+img {
+  width: 500px;
+  height: 600px;
+}
+.left {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+.img_text {
+  position: absolute;
+  top: 50%;
+  right: 45%;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+.one {
+  position: relative;
+}
