@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Bar } from "react-chartjs-2";
-
 import p01 from "./assets/김민규.jpg";
 import p02 from "./assets/김성철.jpg";
 import p03 from "./assets/김영대.jpg";
@@ -61,8 +58,6 @@ function Wordcup() {
     이현우: 0,
     최우식: 0,
   }); //통계
-
-  const ctx = document.getElementById("myChart");
 
   const ItemDisplay = ({ selectedItem }) => {
     const [displayedItem, setDisplayedItem] = useState(null);
@@ -177,24 +172,12 @@ function Wordcup() {
     return <p>로딩중...</p>;
   if (game.length === 1) {
     localStorage.setItem("stat", JSON.stringify(stat));
-    const labels = Object.keys(stat);
-    const chartData = {
-      labels: labels,
-      datasets: [
-        {
-          label: "이상형 월드컵",
-          data: Object.values(stat),
-
-          borderWidth: 1,
-        },
-      ],
-    };
     return (
       <div>
         <h1>이상형 월드컵 우승</h1>
         <div className="one">
           <img className="img" src={game[0].src} />
-          <h2 className="img_win">{game[0].name}</h2>
+          <h2 className="img_text">{game[0].name}</h2>
           <p>{stat[game[0].name]} 번 승리</p>
           <table>
             {Object.keys(stat).map((name) => {
@@ -219,9 +202,6 @@ function Wordcup() {
 
             } */}
           </table>
-          <div className="chart">
-            <Bar data={chartData} />
-          </div>
         </div>
       </div>
     );
