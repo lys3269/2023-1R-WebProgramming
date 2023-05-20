@@ -182,7 +182,7 @@ function Wordcup() {
       labels: labels,
       datasets: [
         {
-          label: "이상형 월드컵",
+          label: "이상형 월드컵 승리횟수",
           data: Object.values(stat),
 
           borderWidth: 1,
