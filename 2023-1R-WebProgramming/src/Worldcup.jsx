@@ -112,7 +112,7 @@ function Wordcup() {
   };
 
   useEffect(() => {
-    const 문자열 = localStorage.getItem("stat");
+    const 문자열 = localStorage.getItem("2020110483");
     if (문자열 != null) {
       setStat(JSON.parse(문자열));
     }
@@ -176,7 +176,7 @@ function Wordcup() {
   if (game.length !== 1 && (game.length === 0 || round + 1 > game.length / 2))
     return <p>로딩중...</p>;
   if (game.length === 1) {
-    localStorage.setItem("stat", JSON.stringify(stat));
+    localStorage.setItem("2020110483", JSON.stringify(stat));
     const labels = Object.keys(stat);
     const chartData = {
       labels: labels,
